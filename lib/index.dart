@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'browse.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MusicAIGeneratorScreen(),
+    return MaterialApp(
+      home: const MusicAIGeneratorScreen(),
+      routes: <String, WidgetBuilder>{
+        '/browse': (context) => const MySongsScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
@@ -39,7 +43,9 @@ class MusicAIGeneratorScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 3.0),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed('/browse');
+              },
               child: const Text("Browse", style: TextStyle(color: Colors.white)),
             ),
           ),
